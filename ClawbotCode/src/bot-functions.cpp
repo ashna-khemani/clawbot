@@ -49,8 +49,8 @@ void turnRightTime (int time){
 
 // ========= Drivetrain Encoder-Based Functions ========= //
 void goFwdEnc (float inches, int velocity){
-    // Calculate how many degrees to turn (call this numberDeg)
-    float numberDeg = (inches/WHEEL_CIRCUMFERENCE) * 360;   // # of revolutions * 360
+    // Calculate how many degrees to turn (call this 'numberDeg')
+    float numberDeg = (inches/WHEEL_CIRCUMFERENCE) * 360;   // (# of revolutions) * 360 = (# of degrees)
 
     // Spin drive motors 'numberDeg' degrees
     LeftDrive.spinFor (numberDeg, rotationUnits::deg, velocity, velocityUnits::pct, false);

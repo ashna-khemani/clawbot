@@ -46,7 +46,6 @@ void usercontrol(void) {
     }
 
     // Arm control - write it yourself!
-      // Insert arm control code. 
       // Hint: very similar to claw control!
     
 
