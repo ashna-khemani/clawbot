@@ -6,6 +6,8 @@
 #define WAIT_AFTER_DRIVE        200
 #define ARM_VELOCITY            90
 #define CLAW_VELOCITY           80
+#define DRIVE_WEIGHT            0.9
+#define TURN_WEIGHT             0.75
 
 // Declare electronics
 extern vex::controller mainControl;

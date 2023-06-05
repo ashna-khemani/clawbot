@@ -3,7 +3,13 @@
 using namespace vex;
 competition Competition;
 
-
+int filter (int value) {
+  if (abs(value) > 16) {
+    return (value);
+  } else {
+    return (0);
+  }
+}
 
 // Pre-autonomous: do actions before competition starts, as soon as program/bot are turned on. Do not have a long loop!
 void pre_auton(void) {
@@ -25,8 +31,8 @@ void usercontrol(void) {
   while (1) {
 
     // Drivetrain control - given here
-    fwd = mainControl.Axis3.position();
-    trn = mainControl.Axis1.position();
+    fwd = filter(mainControl.Axis3.position()) * DRIVE_WEIGHT;
+    trn = filter(mainControl.Axis1.position()) * TURN_WEIGHT;
     leftPwr = (fwd + trn);
     rightPwr = (fwd - trn);
 
