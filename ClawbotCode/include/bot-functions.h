@@ -2,12 +2,12 @@
 #define WHEEL_DIAMETER          4.0      // Wheel diameter in inches
 #define WHEEL_CIRCUMFERENCE     (WHEEL_DIAMETER * 3.2) // Approx. pi ~ 3.2
 #define TURNING_VELOCITY        50
-#define REV_TO_ANGLE            0   //** NEED TO MEASURE THIS! 
+#define REV_TO_ANGLE            1/110   //** NEED TO MEASURE THIS! -- done!
 #define WAIT_AFTER_DRIVE        200
-#define ARM_VELOCITY            90
-#define CLAW_VELOCITY           80
-#define DRIVE_WEIGHT            0.9
-#define TURN_WEIGHT             0.75
+#define ARM_VELOCITY            70
+#define CLAW_VELOCITY           55
+#define DRIVE_WEIGHT            0.3
+#define TURN_WEIGHT             0.3
 
 // Declare electronics
 extern vex::controller mainControl;

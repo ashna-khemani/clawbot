@@ -13,12 +13,52 @@ int filter (int value) {
 
 // Pre-autonomous: do actions before competition starts, as soon as program/bot are turned on. Do not have a long loop!
 void pre_auton(void) {
-  // insert pre-auton code here. Set brakes, print a message...
+  mainControl.Screen.clearScreen();
+  mainControl.Screen.print("I'M NOT A ROBOT.");
+  Arm.setBrake(brakeType::hold);
+  Claw.setBrake(brakeType::hold);
+  setDriveBrake(brake);
+
 }
 
 // Autonomous code for robot to drive itself Use 'bot-functions' here
 void autonomous(void) {
-  // insert auton code here (use functions from bot-functions!)
+  
+  # if 0
+  // Time based auton
+  clawClose();
+  armUpTime(400);
+  goFwdTime(1400, 50);
+  clawOpen();
+  goBackTime(1150, 50);
+  # endif
+  clawClose();
+  armUpEnc(40);
+  goFwdEnc(6, 25);
+  clawOpen();
+  goBackEnc(7, 25);
+  // scored first block - everything above here is perfect code
+  turnLeftEnc(90);
+  armDownEnc(40);
+  goFwdEnc(8, 15);
+  wait(250, msec);
+  clawClose();
+  // grabbed second block
+ goBackEnc(6, 25);
+ turnRightEnc(90);
+ armUpEnc(80);
+ goFwdEnc(11, 25);
+ armDownEnc(20);
+ clawOpen();
+ goBackEnc(7, 25);
+ turnLeftEnc(90);
+ armDownEnc(59);
+ wait(250, msec);
+ goFwdEnc(34, 20);
+ clawClose();
+
+ 
+  //second block complete
 }
 
 // Usercontrol code. Make bot respond to controller joysticks and buttons
@@ -53,6 +93,15 @@ void usercontrol(void) {
 
     // Arm control - write it yourself!
       // Hint: very similar to claw control!
+    if (mainControl.ButtonR1.pressing()){
+      Arm.spin(directionType::fwd, ARM_VELOCITY, velocityUnits::pct);
+    }
+    else if (mainControl.ButtonR2.pressing()){
+      Arm.spin(directionType::rev, ARM_VELOCITY, velocityUnits::pct);
+    }
+    else{
+      Arm.stop();
+    }
     
 
     wait(20, msec); // Sleep the task for a short amount of time to prevent wasted resources.
